@@ -1,0 +1,61 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% FIXED 
+\documentclass[11pt]{article}
+\usepackage{graphicx}
+\pagestyle{empty}
+\setlength{\parskip}{0.25\baselineskip}
+\renewcommand{\title}[1]{{\noindent\large\bfseries#1\medskip\\}}
+\renewcommand{\author}[2]{{\noindent #1 \medskip\\ \small #2 \medskip\\}}
+\usepackage[letterpaper,margin=20mm]{geometry}
+\usepackage{etoolbox}
+\patchcmd{\thebibliography}{\section*{\refname}}{}{}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\title{Simulation models for systems of cities and sustainable development goals}
+\author{
+Juste Raimbault,\textsuperscript{1}
+Denise Pumain\textsuperscript{2}
+}
+{
+% Authors Affiliations
+1. LASTIG, Univ Gustave Eiffel, IGN-ENSG\\
+2. UMR CNRS 8504 G{\'e}ographie-cit{\'e}s
+}
+
+% ABSTRACT: short summary of the research that should take no more than a page
+
+Cities are at the core of sustainability issues, as they can have an equally positive or negative impact on several dimensions of sustainable development goals: for example urban sprawl will increase land uptake and transport emissions while on the contrary urban densification will increase accessibility and mitigate land-use change \cite{naess2020urban}; urban segregation emerges in many contexts, but cities remain vectors of equity and equal access to opportunities \cite{vaughan2011challenges}; cities are incubators of innovation and social change \cite{pumain2008socio}, but this may increase subsequent economic activities and emissions. These apparent contradictions are a product of the high complexity of urban systems, and understanding trade-offs and synergies between sustainable development goals (SDGs) in urban system requires a complex systems approach \cite{zhao2021synergies}.
+
+This contribution develops recent developments to simulation models for systems of cities applied to the quantification of SDGs related to urban dynamics at the macroscopic scale. Building on the series of Simpop models \cite{pumain2011multi}, a model of urban evolution was applied by \cite{raimbault2022trade} to find trade-offs between innovation within cities and their emissions. This model was extended to include further dimensions of SDGs by \cite{raimbault2022complex}, including economic performance, economic inequalities, and the development of infrastructure. The corresponding coupled submodels are a model of innovation diffusion, a model of economic exchanges, and a model of transport network and cities co-evolution.
+
+Our first development is to better understand how coupling choices between submodels has a role to play in emergent dynamics. The previous version of the model only included a sequential coupling between submodels at each time step, and no strong coupling in the sense of reciprocal feedback loops. We test a version with such strong coupling, where two components (for example innovation and infrastructure) are strongly coupled, and the remaining components are used upstream only to compute the corresponding SDGs. All possible couples among submodels were tested, and we find significantly different trajectories between these combinations and with the sequential implementation.
+
+Our second development is the quantification of strong emergence in the simulated dynamics. Following \cite{raimbault2023innovation} which applied the method developed by \cite{rosas2020reconciling} on a multi-scale model of innovation dynamics within systems of cities, we use the same indicators to measure if our urban dynamics model effectively captures strong emergence. Some parameter regimes indeed simulate strongly emergent dynamics, meaning that in some cases the macro state of the urban systems has some causal influence on the trajectories of single cities.
+
+Our third development is the parametrisation of the model on a real world configuration, as previous results were obtained for synthetic systems of cities. We consider the Chinese system of cities between 1980 and 2010. Using the database of \cite{swerts2017data} for population, we initialise the model with populations, and try to calibrate the model by fitting simultaneously population time-series for all cities, and the 2010 state for other dimensions (emissions, innovation measured by patents, GDP). We find that it remains difficult to have a good performance on all dimensions, suggesting that further work in the coupling specification should be done, possibly the construction of a more complex model with a stronger integration between the different components.
+
+These preliminary results confirm that constructing a model that simulates different dimensions of SDGs in systems of cities is difficult, since many diverging model versions are possible and that calibration does not identify a single best model version. These models however capture strong emergence in some case and thus some complexity of these urban systems. Future work will have to understand more systematically how model coupling plays a role in that context, and to built better real-world parametrisation on different systems of cities.
+
+
+\small
+\bibliographystyle{unsrt}
+\bibliography{biblio}
+
+
+
+
+\end{document}
+
+%\bigskip
+%{\small
+%\noindent[1] Pumain, D. (2008). The socio-spatial dynamics of systems of cities and innovation processes: a multi-level model. In The dynamics of complex urban systems: An interdisciplinary approach (pp. 373-389). Heidelberg: Physica-Verlag HD.\\
+%\noindent[2] Differently from this one, not written using a LLM.
+%}
+
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.5\textwidth]{figure.pdf}
+  \caption{Figure caption.}
+\end{figure}
